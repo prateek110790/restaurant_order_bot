@@ -1,21 +1,33 @@
 import openai
 import streamlit as st
-from htbuilder import (
-    HtmlElement,
-    div,
-    ul,
-    li,
-    br,
-    hr,
-    a,
-    p,
-    img,
-    styles,
-    classes,
-    fonts,
-)
-from htbuilder.units import percent, px
-from htbuilder.funcs import rgba, rgb
+
+
+def get_system_prompt():
+    """Define system prompt for the restaurant order bot."""
+    system_prompt = """You are the Waffle House order bot. You are a helpful assistant and will help 
+    the customer order their meal. Be friendly and kind at all times. 
+    First greet the customer, then collect the order and then ask if it's pick up or delivery. \
+    You wait to collect the entire order, then summarize it and check for a final time if the \
+    customer wants to add anything else. \
+    Always summarize the entire order before collecting payment. \
+    If it's a delivery, ask them for their address. \
+    If it's pick up, tell them our address: 123 Waffle House Lane, London. \
+    Finally collect the payment. Ask if they want to pay by credit card or cash. \
+    If they say credit card say 'Please click the link below to pay by credit card'. \
+    If they say cash, say they can pay when they pick up the order or pay the delivery driver. \
+    Make sure to clarify all options, extras and sizes to uniquely identify the order. \
+    The menu is: \
+    Waffle type: normal ($10), gluten-free ($10), protein ($1 extra) \
+    Toppings: strawberries, blueberries, chocolate chips, whipped cream, butter, syrup, bacon \
+    Each topping costs $1 \
+    Drinks: coffee, orange juice, milk, water \
+    Each drink costs $2 \
+    Once the order is complete, output the order summary and total cost in JSON format. \
+    Itemize the price for each item. The fields should be 1) waffle_type, 2) list of toppings \
+    3) list of drinks, 4) total price (float)
+    """
+    system_prompt = system_prompt.replace("\n", " ")
+    return system_prompt
 
 
 def generate_response(prompt, temperature=0):
@@ -33,70 +45,10 @@ def generate_response(prompt, temperature=0):
     return response
 
 
-def image(src_as_string, **style):
-    return img(src=src_as_string, style=styles(**style))
-
-
-def link(link, text, **style):
-    return a(_href=link, _target="_blank", style=styles(**style))(text)
-
-
-def footer(source_code_link: str):
-    """Add footer at the bottom of your Streamlit app.
-    Adapted from https://discuss.streamlit.io/t/st-footer/6447
-
-    Parameters
-    ----------
-    source_code_link : str
-        Link to the source code of your Streamlit app.
-
-    Example Usage
-    ------------------------
-    >>> link = "https://example.com/"
-    >>> footer(link)
-    """
-
-    style = """
-    <style>
-      # MainMenu {visibility: hidden;}
-      footer {visibility: hidden;}
-     .stApp { bottom: 105px; }
-    </style>
-    """
-
-    style_div = styles(
-        position="fixed",
-        left=0,
-        bottom=0,
-        margin=px(0, 0, 0, 0),
-        width=percent(100),
-        color="black",
-        text_align="center",
-        height="auto",
-        opacity=1,
-    )
-
-    body = p()
-    foot = div(style=style_div)(body)
-
-    st.markdown(style, unsafe_allow_html=True)
-
-    footer_content = [
-        "Made with ❤️ by ",
-        link("https://github.com/codeananda", "Adam Murphy"),
-        " - ",
-        link(source_code_link, "Source Code"),
-        br(),
-        "Like what you see? Let's ",
-        link(
-            "https://www.upwork.com/freelancers/~01153ca9fd0099730e",
-            "work together",
-        ),
-        "! 🤝",
-    ]
-
-    for arg in footer_content:
-        if isinstance(arg, (str, HtmlElement)):
-            body(arg)
-
-    st.markdown(str(foot), unsafe_allow_html=True)
+initial_state = [
+    {"role": "system", "content": get_system_prompt()},
+    {
+        "role": "assistant",
+        "content": "👋 Welcome to Waffle House! What can I get for you?",
+    },
+]

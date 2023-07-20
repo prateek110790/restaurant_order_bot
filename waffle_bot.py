@@ -6,7 +6,7 @@ import openai
 import streamlit as st
 from dotenv import load_dotenv, find_dotenv
 from streamlit_chat import message
-from streamlit_helpers import generate_response, footer
+from utils import generate_response, footer
 
 # Set org ID and API key
 _ = load_dotenv(find_dotenv())

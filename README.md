@@ -1,6 +1,6 @@
-# 🧇 Waffle Restaurant Order Bot PoC
+# 🧇 Waffle Restaurant Order Bot
 
-*A ChatGPT-powered PoC chatbot to order food from the ficticious Waffle House restaurant*
+*ChatGPT-Powered Food Ordering Bot for Waffle House - a PoC Project.*
 
 Free access here: https://restaurant-order-bot.streamlit.app/
 

@@ -11,7 +11,7 @@ openai.api_key = st.secrets["OPENAI_API_KEY"]
 
 # Top matter
 st.set_page_config(page_title="Waffle House Order Bot", page_icon=":waffle:")
-st.title("🧇 Waffle House Order Bot (PoC)")
+st.title("🧇 Waffle Restaurant Order Bot (PoC)")
 
 intro = """Welcome to the Waffle House, the place where all your waffle dreams come true.
 

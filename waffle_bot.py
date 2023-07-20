@@ -29,15 +29,15 @@ for message in st.session_state.messages:
         continue
     elif message["role"] == "assistant":
         with st.chat_message(message["role"], avatar="🧇"):
-            st.markdown(message["content"], unsafe_allow_html=True)
+            st.markdown(message["content"])
     else:
         with st.chat_message(message["role"], avatar="👤"):
-            st.markdown(message["content"], unsafe_allow_html=True)
+            st.markdown(message["content"])
 
 if prompt := st.chat_input("What would you like to order?"):
-    with st.chat_message("user"):
+    with st.chat_message("user", avatar="👤"):
         st.markdown(prompt)
 
     output = generate_response(prompt)
-    with st.chat_message("assistant"):
-        st.markdown(output, unsafe_allow_html=True)
+    with st.chat_message("assistant", avatar="🧇"):
+        st.markdown(output)

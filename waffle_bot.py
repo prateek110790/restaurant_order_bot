@@ -44,15 +44,15 @@ def get_system_prompt():
 
 # Top matter
 st.set_page_config(page_title="Waffle House Order Bot", page_icon=":waffle:")
-st.title("Waffle House Order Bot 🧇")
+st.title("🧇 Waffle House Order Bot")
 
-intro = """Welcome to the Waffle House, the place where all your waffle filled dreams come true.
+intro = """Welcome to the Waffle House, the place where all your waffle dreams come true.
 
 Start chatting with WaffleBot below to find out what you can order, how much it costs, and how to pay."""
 st.markdown(intro)
 
 # Add footer
-source_link = "https://github.com/codeananda/ChatGPT_Projects/blob/main/waffle_bot.py"
+source_link = "https://github.com/codeananda/restaurant_order_bot/blob/main/waffle_bot.py"
 footer(source_link)
 
 initial_state = [

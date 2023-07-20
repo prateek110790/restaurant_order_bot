@@ -1,7 +1,10 @@
 """A chatbot that helps the user order food from a restaurant."""
 
+from copy import deepcopy
+
 import openai
 import streamlit as st
+
 from utils import generate_response, initial_state
 
 openai.api_key = st.secrets["OPENAI_API_KEY"]
@@ -16,12 +19,12 @@ Start chatting with WaffleBot below to find out what you can order, how much it 
 st.markdown(intro)
 
 if "messages" not in st.session_state:
-    st.session_state["messages"] = initial_state
+    st.session_state["messages"] = deepcopy(initial_state)
 
 # Let user clear the current conversation
 clear_button = st.button("Clear Conversation", key="clear")
 if clear_button:
-    st.session_state["messages"] = initial_state
+    st.session_state["messages"] = deepcopy(initial_state)
 
 # Display chat messages from history on app rerun
 for message in st.session_state.messages:

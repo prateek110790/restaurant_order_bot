@@ -1,6 +1,6 @@
 # 🧇 Waffle Restaurant Order Bot
 
-*ChatGPT-powered food ordering bot.*
+*A ChatGPT-powered food ordering bot.*
 
 Access here: https://restaurant-order-bot.streamlit.app/
 

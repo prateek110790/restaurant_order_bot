@@ -19,7 +19,7 @@ Create a bot to handle every aspect of customer orders automatically.
 
 Using ChatGPT and the OpenAI API, I built a simple restaurant ordering chatbot. It handles customer orders and addresses inquiries in a fully automated way.
 
-## 🤔 Areas for Improvement
+## 💪 Areas for Improvement
 
 - Integrate with a social media platform, e.g. Facebook Messenger or Instagram. Chatbots need to be native to wherever a business uses them. Exposing this as an API would enable this.
 - Improve output rendering with markdown to give a more pleasing UI. Instead of a wall of text, it would be lovely to get structured output or even output that can handle images or coloured text.

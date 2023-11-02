@@ -39,7 +39,8 @@ def generate_response(prompt, temperature=0):
         model="gpt-4",
         messages=st.session_state["messages"],
         temperature=temperature,
-        stream=True,
+        # TODO - add streaming support
+        stream=False,
     )
     response = completion.choices[0].message.content
     st.session_state["messages"].append({"role": "assistant", "content": response})

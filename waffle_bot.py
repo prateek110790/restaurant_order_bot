@@ -7,7 +7,7 @@ import streamlit as st
 
 from utils import generate_response, initial_state
 
-openai.api_key = st.secrets["OPENAI_API_KEY"]
+raise Exception("The 'openai.api_key' option isn't read in the client API. You will need to pass it when you instantiate the client, e.g. 'OpenAI(api_key=st.secrets["OPENAI_API_KEY"])'")
 
 # Top matter
 st.set_page_config(page_title="Waffle House Order Bot", page_icon=":waffle:")

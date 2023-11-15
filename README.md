@@ -21,6 +21,7 @@ Using ChatGPT and the OpenAI API, I built a simple restaurant ordering chatbot. 
 
 ## 💪 Areas for Improvement
 
+- Add streaming support - currently outputs answer in one big dump which leaves the user waiting for a while and decreases UX.
 - Integrate with a social media platform, e.g. Facebook Messenger or Instagram. Chatbots need to be native to wherever a business uses them. Exposing this as an API would enable this.
 - Improve output rendering with markdown to give a more pleasing UI. Instead of a wall of text, it would be lovely to get structured output or even output that can handle images or coloured text.
 - Integrate a card payment processor. 
